@@ -11,7 +11,11 @@ namespace EmailServiceApp
 
             var redis = ConnectionMultiplexer.Connect("localhost:6379");
             var pubsub = redis.GetSubscriber();
+
+
             pubsub.Subscribe("codehaks", (channel, message) => MessageAction(message));
+
+            Console.ReadLine();
         }
 
         private static void MessageAction(RedisValue message)
